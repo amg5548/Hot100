@@ -31,7 +31,7 @@ async function main() {
 
 function getArtist() {
 	return new Promise((resolve) => {
-		rl.question('What artist would you like to search for in the HOT 100? You can use a full or partial name\n', (artist) => {
+		rl.question('What artist would you like to search for in the HOT 100? You can use a full or partial name.\n', (artist) => {
 			resolve(artist);
 		});
 	});
@@ -64,7 +64,9 @@ async function sendSongs(artist) {
 			user: 'ait618bro@gmail.com',
 			pass: process.env.EMAIL_PASS
 		},
-		tls: { rejectUnauthorized: false }
+		tls: {
+			rejectUnauthorized: false
+		}
 	});
 	const mailoptions = {
 		from: '"Aaron Gray" <ait618bro@gmail.com>',
@@ -75,7 +77,7 @@ async function sendSongs(artist) {
 	};
 	transporter.sendMail(mailoptions, function(error) {
 		if (error) {
-			console.log('Something went wrong with the provided email address. Try running your search again...');
+			console.log('Something went wrong with Nodemailer... Check the entered email address and try again...');
 			rl.close();
 		} else {
 			console.log('Sent!!');
