@@ -71,7 +71,7 @@ async function sendSongs(artist) {
 	const mailoptions = {
 		from: '"Aaron Gray" <ait618bro@gmail.com>',
 		to: email,
-		subject: `Songs in the HOT 100 by artists containing: '${artist}'`,
+		subject: `Songs in the HOT 100 by artists containing '${artist}'`,
 		text: songs.join(''),
 		html: songs.join('')
 	};
